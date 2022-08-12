@@ -1,0 +1,14 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int slow = 0;
+        int fast = s.find(' ');
+        while (fast != string::npos) {
+            reverse(s.begin()+slow, s.begin()+fast);
+            slow = fast+1;
+            fast = s.find(' ', slow);
+        }
+        reverse(s.begin()+slow, s.end());
+        return s;
+    }
+};
