@@ -1,0 +1,35 @@
+class Solution {
+    public String reverseWords(String s) {
+        char[] c = s.toCharArray();
+        int slow = 0;
+        int fast;
+        int n = c.length;
+        for (int i=1; i<=n; i++) {
+            if (i == n || c[i] == ' ') {
+                fast = i - 1;
+                while (slow < fast) {
+                    char temp = c[slow];
+                    c[slow++] = c[fast];
+                    c[fast--] = temp;
+                }
+                slow = i+1;
+                i++;
+            }
+        }
+        return String.valueOf(c);
+    }
+}
+
+/*
+class Solution {
+    public String reverseWords(String s) {
+        String[] words = s.split(" ");
+        for (int i=0; i<words.length; i++) {
+            String[] w = words[i].split("");
+            Collections.reverse(Arrays.asList(w));
+            words[i] = String.join("", w);
+        }
+        return String.join(" ", words);
+    }
+}
+*/
